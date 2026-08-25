@@ -16,65 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
    LIVE EDIT MODE FUNCTIONS
    -------------------------------------------------------------------------- */
 function toggleEditMode() {
-    isEditMode = !isEditMode;
+    isEditMode = false;
     const editBtn = document.getElementById('edit-toggle-btn');
     const editBanner = document.getElementById('edit-banner');
-    const editableElements = document.querySelectorAll('.editable');
-
-    if (isEditMode) {
-        editBtn.classList.add('btn-primary');
-        editBtn.classList.remove('btn-secondary');
-        editBtn.innerHTML = '<i class="fa-solid fa-check"></i> Exit Edit Mode';
-        editBanner.style.display = 'block';
-
-        editableElements.forEach(el => {
-            el.setAttribute('contenteditable', 'true');
-        });
-    } else {
-        editBtn.classList.remove('btn-primary');
-        editBtn.classList.add('btn-secondary');
-        editBtn.innerHTML = '<i class="fa-solid fa-pen-to-square"></i> Live Edit Mode';
-        editBanner.style.display = 'none';
-
-        editableElements.forEach(el => {
-            el.removeAttribute('contenteditable');
-        });
-
-        // Auto-save on exit
-        saveEdits(false);
-    }
+    if (editBtn) editBtn.style.display = 'none';
+    if (editBanner) editBanner.style.display = 'none';
+    document.querySelectorAll('.editable').forEach(el => el.removeAttribute('contenteditable'));
 }
 
-function saveEdits(showAlert = true) {
-    const editableElements = document.querySelectorAll('.editable[id]');
-    const dataToSave = {};
-
-    editableElements.forEach(el => {
-        dataToSave[el.id] = el.innerHTML;
-    });
-
-    localStorage.setItem('kushh_portfolio_edits', JSON.stringify(dataToSave));
-
-    if (showAlert) {
-        alert('✨ Changes saved successfully! Your edits will persist across refreshes and exports.');
-    }
-}
+function saveEdits() {}
 
 function loadSavedEdits() {
-    const savedData = localStorage.getItem('kushh_portfolio_edits');
-    if (!savedData) return;
-
+    // Live edit mode turned off; clear any cached local edits to ensure fresh content
     try {
-        const edits = JSON.parse(savedData);
-        Object.keys(edits).forEach(id => {
-            const el = document.getElementById(id);
-            if (el) {
-                el.innerHTML = edits[id];
-            }
-        });
-    } catch (e) {
-        console.error('Failed to load saved edits:', e);
-    }
+        localStorage.removeItem('kushh_portfolio_edits');
+    } catch (e) {}
 }
 
 function resetEdits() {
