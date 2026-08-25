@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kushh Kothari | Financial & Quantitative Analytics</title>
+    <meta name="description" content="Portfolio and Resume of Kushh Kothari - B.Com Banking & Financial Analytics Student specializing in Startup Evaluation, Financial Modeling, ANOVA Risk Analysis, and Stock Forecasting.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="navbar no-print">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-name editable" id="nav-brand-name">Kushh Kothari</span>
+                <span class="brand-tag">FinTech & Analytics</span>
+            </div>
+            
+            <div class="nav-controls">
+                <div class="view-switch-container">
+                    <button id="view-interactive-btn" class="view-btn active" onclick="switchView('interactive')">
+                        <i class="fa-solid fa-sparkles"></i> Interactive Showcase
+                    </button>
+                    <button id="view-cv-btn" class="view-btn" onclick="switchView('cv')">
+                        <i class="fa-solid fa-file-contract"></i> Executive CV Mode
+                    </button>
+                </div>
+                
+                <button id="edit-toggle-btn" class="btn btn-secondary" onclick="toggleEditMode()">
+                    <i class="fa-solid fa-pen-to-square"></i> Live Edit Mode
+                </button>
+
+                <button id="theme-toggle" class="icon-btn" title="Toggle Dark/Light Mode" onclick="toggleTheme()">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fa-solid fa-download"></i> Download / Print PDF
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Floating Live Edit Control Banner -->
+    <div id="edit-banner" class="edit-banner no-print" style="display: none;">
+        <div class="edit-banner-content">
+            <span><i class="fa-solid fa-wand-magic-sparkles"></i> <strong>Live Edit Mode Active:</strong> Click any text, heading, bullet point or metric directly to edit!</span>
+            <div class="edit-banner-actions">
+                <button class="btn btn-sm btn-primary" onclick="saveEdits()"><i class="fa-solid fa-floppy-disk"></i> Save Edits</button>
+                <button class="btn btn-sm btn-outline" onclick="resetEdits()"><i class="fa-solid fa-rotate-left"></i> Reset Defaults</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <main class="main-wrapper">
+
+        <!-- ================= INTERACTIVE SHOWCASE MODE ================= -->
+        <div id="interactive-view" class="view-section active no-print">
+            
+            <!-- Hero Banner -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge editable" id="hero-badge-text">
+                        <span class="pulse-dot"></span> B.Com Banking & Financial Analytics | BSE Institute (GPA: 9.0/10)
+                    </div>
+                    <h1 class="hero-title editable" id="hero-title-text">
+                        Bridging <span class="gradient-text">Financial Analytics</span>, Risk Modeling & Technology
+                    </h1>
+                    <p class="hero-description editable" id="hero-desc-text">
+                        Finance-focused undergraduate with hands-on experience evaluating <strong>300+ startups</strong>, conducting <strong>10-year ANOVA portfolio risk studies</strong>, and building Python & Streamlit quantitative financial forecasting tools. Seeking a Master's in Finance to drive analytical impact in FinTech & Investment Risk.
+                    </p>
+
+                    <!-- Key Metric Counter Badges -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-value editable" id="metric-gpa">9.0<span class="metric-sub">/10</span></div>
+                            <div class="metric-label editable" id="metric-gpa-label">Semester 4 GPA (BSE Institute)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value editable" id="metric-startups">300+</div>
+                            <div class="metric-label editable" id="metric-startups-label">Startups Analyzed</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value editable" id="metric-anova">30</div>
+                            <div class="metric-label editable" id="metric-anova-label">Asset Classes Analyzed (10-Yr ANOVA)</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-value editable" id="metric-awards">14</div>
+                            <div class="metric-label editable" id="metric-awards-label">Extracurricular Awards</div>
+                        </div>
+                    </div>
+
+                    <!-- Hero Contact Buttons -->
+                    <div class="hero-actions">
+                        <a href="https://www.linkedin.com/in/kushh-kothari" target="_blank" rel="noopener noreferrer" class="btn btn-linkedin">
+                            <i class="fa-brands fa-linkedin"></i> Connect on LinkedIn
+                        </a>
+                        <a href="mailto:kushkothari@example.com" class="btn btn-secondary">
+                            <i class="fa-solid fa-envelope"></i> Send Email
+                        </a>
+                        <a href="https://give.do" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                            <i class="fa-solid fa-hand-holding-heart"></i> Give.do Fundraiser
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Navigation Tabs -->
+            <div class="tab-nav">
+                <button class="tab-link active" onclick="openTab('summary-tab')"><i class="fa-solid fa-user-check"></i> Profile</button>
+                <button class="tab-link" onclick="openTab('internship-tab')"><i class="fa-solid fa-user-graduate"></i> Internship</button>
+                <button class="tab-link" onclick="openTab('projects-tab')"><i class="fa-solid fa-chart-line"></i> Analytics Projects</button>
+                <button class="tab-link" onclick="openTab('skills-tab')"><i class="fa-solid fa-laptop-code"></i> Skills & Tools</button>
+                <button class="tab-link" onclick="openTab('achievements-tab')"><i class="fa-solid fa-trophy"></i> Leadership & Awards</button>
+            </div>
+
+            <!-- TAB 1: PROFILE SUMMARY -->
+            <div id="summary-tab" class="tab-content active">
+                <div class="card grid-2">
+                    <div class="card-body">
+                        <h2 class="section-heading"><i class="fa-solid fa-bullseye gradient-icon"></i> Professional Executive Summary</h2>
+                        <p class="text-body editable" id="profile-summary-p1">
+                            Finance-focused B.Com undergraduate specializing in <strong>Banking and Financial Analytics at BSE Institute</strong> (GPA 9.0/10 in Sem 4). Proven track record of applying quantitative rigor to business strategy, startup valuation, and risk analysis.
+                        </p>
+                        <p class="text-body editable" id="profile-summary-p2">
+                            During my venture capital internship at <strong>riidl Somaiya School</strong>, I systematically analyzed over <strong>300+ early-stage startups</strong> across unit economics, burn rate, valuation, and market positioning. My academic research encompasses 10-year ANOVA statistical performance evaluation across 30 distinct risk-profiled asset classes, as well as live quantitative web apps for stock price forecasting built with Python and Streamlit.
+                        </p>
+                    </div>
+                    <div class="card-body info-highlight-box">
+                        <h3 class="sub-heading"><i class="fa-solid fa-graduation-cap"></i> Academic Highlights</h3>
+                        <div class="edu-card">
+                            <div class="edu-title editable" id="edu-degree">B.Com in Banking and Financial Analytics</div>
+                            <div class="edu-institution editable" id="edu-school">BSE Institute Ltd, Mumbai, India</div>
+                            <div class="edu-meta"><span class="badge badge-accent editable" id="edu-years">2024 – 2027</span> <span class="badge badge-gold editable" id="edu-gpa">GPA: 9.0 / 10 (Sem 4)</span></div>
+                            <p class="edu-desc editable" id="edu-courses">Coursework: Financial Analytics, Risk Management, Quantitative Methods, Corporate Finance, Securities Markets, Time Series Analysis.</p>
+                        </div>
+
+                        <h3 class="sub-heading mt-4"><i class="fa-solid fa-earth-americas"></i> Languages Spoken</h3>
+                        <div class="language-tags editable" id="languages-list">
+                            <span class="tag">English (Fluent)</span>
+                            <span class="tag">Hindi (Fluent)</span>
+                            <span class="tag">Gujarati (Fluent)</span>
+                            <span class="tag">Marwadi (Fluent)</span>
+                            <span class="tag">German (CEFR Level)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 2: SEPARATE DEDICATED INTERNSHIP SECTION -->
+            <div id="internship-tab" class="tab-content">
+                <div class="card mb-6">
+                    <div class="card-header">
+                        <div>
+                            <span class="badge badge-emerald"><i class="fa-solid fa-building-user"></i> Venture & Startup Evaluation</span>
+                            <h2 class="card-title mt-2 editable" id="internship-title">Intern – Innovation & Entrepreneurship Development</h2>
+                            <div class="card-subtitle editable" id="internship-company"><i class="fa-solid fa-building"></i> RIIDL Somaiya School | Mumbai, India</div>
+                        </div>
+                        <div class="date-badge editable" id="internship-dates"><i class="fa-regular fa-calendar"></i> May 2023 – June 2023</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="internship-highlight-banner mb-4">
+                            <div class="ib-icon"><i class="fa-solid fa-rocket gradient-icon"></i></div>
+                            <div class="editable" id="internship-banner-text">
+                                <strong>Venture Capital & Startup Analytics Focus:</strong> Evaluated early-stage ventures across financials, unit economics, market size, and fundraising strategy.
+                            </div>
+                        </div>
+
+                        <h3 class="sub-heading mb-3"><i class="fa-solid fa-list-check gradient-icon"></i> Core Responsibilities & Impact</h3>
+                        <ul class="bullet-list editable" id="internship-bullets">
+                            <li>
+                                <strong>Startup Business & Financial Evaluation:</strong> Analyzed <strong>300+ early-stage startups</strong> across business metrics including revenue models, cost breakdowns, operational budgets, cash burn, and multi-year financial projections to determine viability and commercial growth potential.
+                            </li>
+                            <li>
+                                <strong>Market Sizing & Competitor Positioning:</strong> Conducted comprehensive target sector research, TAM/SAM/SOM market sizing, and competitor benchmark evaluations to determine startup market differentiation and sustainability.
+                            </li>
+                            <li>
+                                <strong>Fundraising Strategy & Cap Table Assessment:</strong> Reviewed early-stage pitch decks, capital requirements, and multi-round financial models to evaluate seed financing feasibility and runway projections.
+                            </li>
+                            <li>
+                                <strong>Airtable Touchpoint Database Architecture:</strong> Scouted ventures across tech & incubator ecosystems, structuring a centralized <strong>Airtable database</strong> tracking 300+ startup touchpoints, founder metrics, and investor engagement pipelines.
+                            </li>
+                            <li>
+                                <strong>Financial Data Analysis & Excel Modeling:</strong> Leveraged <strong>Microsoft Excel</strong> for financial normalization, comparative ratio benchmarking, and company-level quantitative analysis.
+                            </li>
+                        </ul>
+
+                        <div class="tools-used-section mt-4">
+                            <span class="text-muted font-sm fw-600 mr-2">Key Skills & Tools Applied:</span>
+                            <span class="badge badge-outline">Startup Valuation</span>
+                            <span class="badge badge-outline">Financial Modeling</span>
+                            <span class="badge badge-outline">Airtable</span>
+                            <span class="badge badge-outline">Microsoft Excel</span>
+                            <span class="badge badge-outline">Competitor Analysis</span>
+                            <span class="badge badge-outline">Market Sizing (TAM/SAM)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: ACADEMIC FINANCE PROJECTS & INTERACTIVE DEMOS -->
+            <div id="projects-tab" class="tab-content">
+                
+                <!-- Project 1: Portfolio Risk ANOVA -->
+                <div class="card project-card mb-6">
+                    <div class="project-header">
+                        <div>
+                            <span class="badge badge-accent">Financial Econometrics & Statistics</span>
+                            <h2 class="project-title editable" id="proj1-title">1. Portfolio Risk & Asset-Class Optimization Analysis (ANOVA)</h2>
+                            <p class="project-subtitle editable" id="proj1-sub">10-Year Historical Study (2015–2024) across 30 Asset Classes</p>
+                        </div>
+                    </div>
+                    <div class="card-body grid-2 gap-6">
+                        <div>
+                            <ul class="bullet-list editable" id="proj1-bullets">
+                                <li>
+                                    <strong>10-Year Historical Analysis:</strong> Evaluated historical return metrics for <strong>30 diverse asset classes</strong> categorized under Low, Medium, and High risk portfolios across a decade of market cycles.
+                                </li>
+                                <li>
+                                    <strong>ANOVA & Variance Testing:</strong> Implemented Analysis of Variance (ANOVA) and descriptive statistical models to test for statistically significant performance divergence among risk groups.
+                                </li>
+                                <li>
+                                    <strong>Top Performing Asset Categories:</strong> Identified key category leaders:
+                                    <ul class="sub-bullet-list">
+                                        <li><strong>Low Risk:</strong> Corporate Bonds (Average Return: 8.28%)</li>
+                                        <li><strong>Medium Risk:</strong> ELSS Funds (Average Return: 14.96%)</li>
+                                        <li><strong>High Risk:</strong> Technology Sector Funds (Average Return: 20.83%)</li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <strong>Statistical Significance Finding:</strong> Discovered a highly statistically significant variation within Low-Risk assets (<strong>F = 17.55, p &lt; 0.001</strong>), whereas Medium and High-Risk groups demonstrated homogenous return variance (p = 0.323 and p = 0.898).
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Interactive Chart Widget for ANOVA -->
+                        <div class="chart-box">
+                            <div class="chart-header">
+                                <h3><i class="fa-solid fa-chart-bar"></i> Asset Class Risk vs. Return Distribution (ANOVA)</h3>
+                            </div>
+                            <div class="canvas-container">
+                                <canvas id="anovaChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Stock Price Forecaster Simulator -->
+                <div class="card project-card mb-6">
+                    <div class="project-header">
+                        <div>
+                            <span class="badge badge-emerald">Python & Streamlit Web App</span>
+                            <h2 class="project-title editable" id="proj2-title">2. Quantitative Stock Price Forecasting Application</h2>
+                            <p class="project-subtitle editable" id="proj2-sub">Built with Python, Streamlit & Time Series Analytics</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-body editable" id="proj2-desc">
+                            Developed an interactive web application that retrieves historical market price data and generates quantitative forward forecasts with visual trendlines and dynamic stock selector controls.
+                        </p>
+                        
+                        <!-- Interactive Forecaster Sandbox -->
+                        <div class="forecaster-demo">
+                            <div class="forecaster-controls">
+                                <div class="control-group">
+                                    <label for="stock-select"><i class="fa-solid fa-chart-line"></i> Select Asset / Ticker:</label>
+                                    <select id="stock-select" class="form-control" onchange="updateForecaster()">
+                                        <option value="RELIANCE">Reliance Industries (NSE)</option>
+                                        <option value="TCS">Tata Consultancy Services (NSE)</option>
+                                        <option value="HDFCBANK">HDFC Bank (NSE)</option>
+                                        <option value="NIFTY50">NIFTY 50 Index</option>
+                                    </select>
+                                </div>
+                                <div class="control-group">
+                                    <label for="horizon-select"><i class="fa-solid fa-clock"></i> Forecast Horizon:</label>
+                                    <select id="horizon-select" class="form-control" onchange="updateForecaster()">
+                                        <option value="30">30 Days Forward</option>
+                                        <option value="90">90 Days Forward</option>
+                                        <option value="180">180 Days Forward</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="canvas-container mt-4" style="height: 280px;">
+                                <canvas id="forecastChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Tableau Sales Dashboards -->
+                <div class="card project-card">
+                    <div class="project-header">
+                        <div>
+                            <span class="badge badge-purple">Tableau Data Visualization</span>
+                            <h2 class="project-title editable" id="proj3-title">3. Nike & Adidas Enterprise Sales Analytics Dashboards</h2>
+                            <p class="project-subtitle editable" id="proj3-sub">Interactive Commercial Analytics & Segment Breakdown</p>
+                        </div>
+                    </div>
+                    <div class="card-body grid-2 gap-6">
+                        <div class="dashboard-preview-card">
+                            <div class="dash-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+                            <h3 class="editable" id="nike-title">Nike Sales Performance Dashboard</h3>
+                            <p class="editable" id="nike-desc">Transformed multi-year apparel & footwear transaction datasets into dynamic Tableau visual analytics. Designed drill-down filters for product category profitability and regional sales velocity.</p>
+                            <span class="badge badge-outline"><i class="fa-solid fa-chart-pie"></i> Visual KPI Metrics</span>
+                        </div>
+                        <div class="dashboard-preview-card">
+                            <div class="dash-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                            <h3 class="editable" id="adidas-title">Adidas Sales Performance Dashboard</h3>
+                            <p class="editable" id="adidas-desc">Built comprehensive sales dimension dashboards analyzing product line revenue across retailer channels, margin percentages, and geographic performance trends.</p>
+                            <span class="badge badge-outline"><i class="fa-solid fa-filter"></i> Interactive Filtering</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 4: SKILLS & TECHNICAL PROFICIENCY -->
+            <div id="skills-tab" class="tab-content">
+                <div class="grid-3 gap-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="skill-category-icon"><i class="fa-solid fa-code"></i></div>
+                            <h3 class="sub-heading">Programming & Dev</h3>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill1-name">Python</span> <span class="editable" id="skill1-exp">1 Year</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill2-name">Streamlit</span> <span class="editable" id="skill2-exp">3 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill3-name">Java</span> <span class="editable" id="skill3-exp">1 Year</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="skill-category-icon"><i class="fa-solid fa-calculator"></i></div>
+                            <h3 class="sub-heading">Financial & Analytics</h3>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill4-name">Financial Analysis & Modeling</span> <span class="editable" id="skill4-exp">2 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill5-name">Time Series Analysis</span> <span class="editable" id="skill5-exp">2 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill6-name">Data Visualization</span> <span class="editable" id="skill6-exp">3 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill7-name">ANOVA & Risk Modeling</span> <span class="editable" id="skill7-exp">Academic</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="skill-category-icon"><i class="fa-solid fa-toolbox"></i></div>
+                            <h3 class="sub-heading">Software & Tools</h3>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill8-name">Microsoft Excel</span> <span class="editable" id="skill8-exp">3 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill9-name">Tableau</span> <span class="editable" id="skill9-exp">2 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 88%;"></div></div>
+                            </div>
+                            <div class="skill-item">
+                                <div class="skill-info"><span class="editable" id="skill10-name">Airtable & Databases</span> <span class="editable" id="skill10-exp">2 Years</span></div>
+                                <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 5: LEADERSHIP, COMMUNITY & ATHLETICS -->
+            <div id="achievements-tab" class="tab-content">
+                <div class="grid-2 gap-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fa-solid fa-hand-holding-heart gradient-icon"></i> Community Leadership</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="timeline-item mb-4">
+                                <div class="timeline-title editable" id="lead1-title">Give.do Fundraiser Organizer & Campaigner (2026)</div>
+                                <p class="timeline-desc editable" id="lead1-desc">Spearheaded and promoted a community outreach campaign supporting social initiatives to uplift underprivileged communities.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-title editable" id="lead2-title">Leo Club of Chembur Icon — Lions International (2024–2025)</div>
+                                <p class="timeline-desc editable" id="lead2-desc">Active Member organizing food & clothing distribution drives, blood donation initiatives, event management, and social awareness programs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="card-title"><i class="fa-solid fa-award gradient-icon"></i> Extracurricular Achievements</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="awards-grid">
+                                <div class="award-pill editable" id="award-dance"><i class="fa-solid fa-person-dancing"></i> <strong>Dance:</strong> 14 Competitive Awards</div>
+                                <div class="award-pill editable" id="award-football"><i class="fa-solid fa-futbol"></i> <strong>Football:</strong> 7 Tournaments | 2 Championships</div>
+                                <div class="award-pill editable" id="award-basketball"><i class="fa-solid fa-basketball"></i> <strong>Basketball:</strong> 3 Tournaments | 1 3rd Place</div>
+                                <div class="award-pill editable" id="award-badminton"><i class="fa-solid fa-shuttlecock"></i> <strong>Badminton:</strong> 2 Tournaments | 1 Win, 1 3rd</div>
+                            </div>
+
+                            <h4 class="mt-4 mb-2 fw-600">Personal Passions & Athletic Interests:</h4>
+                            <div class="interests-tags editable" id="interests-list">
+                                <span class="tag">Gym & Fitness</span>
+                                <span class="tag">Athletics</span>
+                                <span class="tag">Football</span>
+                                <span class="tag">Basketball</span>
+                                <span class="tag">Badminton</span>
+                                <span class="tag">Swimming</span>
+                                <span class="tag">Dance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= EXECUTIVE CV / FORMAL PRINTABLE RESUME ================= -->
+        <div id="cv-view" class="view-section cv-container">
+            <div class="cv-page">
+                <!-- Header -->
+                <header class="cv-header">
+                    <h1 class="cv-name editable" id="cv-name-text">KUSHH KOTHARI</h1>
+                    <div class="cv-contact editable" id="cv-contact-text">
+                        Mumbai, India &nbsp;|&nbsp; 
+                        <a href="https://www.linkedin.com/in/kushh-kothari">linkedin.com/in/kushh-kothari</a> &nbsp;|&nbsp; 
+                        B.Com Banking & Financial Analytics
+                    </div>
+                </header>
+
+                <hr class="cv-divider">
+
+                <!-- Summary -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">PROFESSIONAL SUMMARY</h2>
+                    <p class="cv-text editable" id="cv-summary-text">
+                        Finance-focused B.Com undergraduate specializing in Banking and Financial Analytics at BSE Institute, with a 9.0/10 GPA in Semester 4 and hands-on experience applying financial and quantitative analysis to real-world business data. Analyzed 300+ startups across revenue, costs, budgets, market opportunities, competitor positioning, fundraising and financial projections, while developing academic projects in portfolio risk analysis and statistical evaluation of asset classes. Built a Python and Streamlit stock forecasting application and developed Tableau dashboards, combining financial analysis with data-driven visualization and technology. Seeking a Master’s in Finance to deepen expertise in financial analysis, risk management and FinTech, with the long-term goal of pursuing analytical roles in financial institutions, FinTech companies or investment and risk functions.
+                    </p>
+                </section>
+
+                <!-- Education -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">EDUCATION</h2>
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-edu-degree">B.Com in Banking and Financial Analytics</span>
+                            <span class="cv-entry-date editable" id="cv-edu-date">2024 – 2027</span>
+                        </div>
+                        <div class="cv-entry-sub editable" id="cv-edu-school">BSE Institute Ltd | Mumbai, India</div>
+                        <div class="cv-entry-detail editable" id="cv-edu-gpa">Semester 4 Cumulative GPA: <strong>9.0 / 10.0</strong></div>
+                    </div>
+                </section>
+
+                <!-- SEPARATE DEDICATED INTERNSHIP SECTION IN CV -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">INTERNSHIP EXPERIENCE</h2>
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-intern-company">RIIDL Somaiya School</span>
+                            <span class="cv-entry-date editable" id="cv-intern-date">May 2023 – June 2023</span>
+                        </div>
+                        <div class="cv-entry-sub editable" id="cv-intern-role">Intern – Innovation & Entrepreneurship Development | Mumbai, India</div>
+                        <ul class="cv-bullets editable" id="cv-intern-bullets">
+                            <li>Analyzed 300+ startups across business and financial metrics, including revenue, costs, budgets and financial projections, to assess business viability and growth potential.</li>
+                            <li>Conducted market research, market sizing and competitor analysis to evaluate startup positioning, market opportunities and commercial potential.</li>
+                            <li>Reviewed fundraising strategies and financial projections to assess early-stage financing requirements and business sustainability.</li>
+                            <li>Scouted startups from multiple sources and created a structured database of startup touchpoints using Airtable.</li>
+                            <li>Used Excel to organize and maintain company-level business and financial data for comparative analysis.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Projects -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">ACADEMIC FINANCE PROJECTS</h2>
+                    
+                    <!-- Project 1 -->
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-proj1-title">1. Portfolio Risk & Asset-Class Optimization Analysis | ANOVA</span>
+                            <span class="cv-entry-date editable" id="cv-proj1-date">2015 – 2024</span>
+                        </div>
+                        <ul class="cv-bullets editable" id="cv-proj1-bullets">
+                            <li>Analyzed 30 asset classes across low-, medium-, and high-risk portfolios using 10 years of historical return data to evaluate differences in asset-class performance.</li>
+                            <li>Applied ANOVA, variance analysis and descriptive statistics to compare return distributions across 3 risk profiles and identify statistically significant differences in performance.</li>
+                            <li>Identified Corporate Bonds (8.28 average), ELSS (14.96) and Technology Funds (20.83) as the highest-average-return categories within the low-, medium- and high-risk groups, respectively.</li>
+                            <li>Found statistically significant variation among low-risk asset classes (F = 17.55, p &lt; 0.001), while medium- and high-risk groups showed no statistically significant differences (p = 0.323 and 0.898, respectively).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-proj2-title">2. Sales Performance Analytics Dashboards | Tableau</span>
+                            <span class="cv-entry-date editable" id="cv-proj2-date">Academic Project</span>
+                        </div>
+                        <ul class="cv-bullets editable" id="cv-proj2-bullets">
+                            <li><strong>Nike Product Performance Dashboard:</strong> Developed an interactive Tableau dashboard to visualize and analyze Nike sales performance. Applied data visualization techniques to transform raw transaction data into strategic business insights.</li>
+                            <li><strong>Adidas Sales Performance Dashboard:</strong> Created an interactive Tableau dashboard evaluating sales patterns across product categories, geographic segments, and business metrics.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-proj3-title">3. Stock Price Forecasting Application | Python, Streamlit</span>
+                            <span class="cv-entry-date editable" id="cv-proj3-date">Live Application</span>
+                        </div>
+                        <ul class="cv-bullets editable" id="cv-proj3-bullets">
+                            <li>Developed an interactive stock price forecasting application using Python and Streamlit to analyze historical market data and generate forward-looking price estimates.</li>
+                            <li>Built a user-facing interface enabling stock selection and visualization of historical price trends alongside forecast output curves.</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Technical Skills -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">TECHNICAL SKILLS</h2>
+                    <div class="cv-text editable" id="cv-skills-text">
+                        <strong>Programming & Development:</strong> Python (1 yr), Streamlit (3 yrs), Java (1 yr)<br>
+                        <strong>Financial & Analytical:</strong> Financial Analysis (2 yrs), Time Series Analysis (2 yrs), Data Visualization (3 yrs), ANOVA Risk Modeling<br>
+                        <strong>Software & Tools:</strong> Microsoft Excel (3 yrs), Tableau (2 yrs), Airtable
+                    </div>
+                </section>
+
+                <!-- Community Involvement -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">LEADERSHIP & COMMUNITY INVOLVEMENT</h2>
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-lead1-title">Fundraiser Organizer & Campaigner — Give.do</span>
+                            <span class="cv-entry-date editable" id="cv-lead1-date">2026</span>
+                        </div>
+                        <p class="cv-text-sm editable" id="cv-lead1-desc">Organized and promoted fundraising initiatives aimed at empowering underprivileged communities.</p>
+                    </div>
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <span class="cv-entry-bold editable" id="cv-lead2-title">Leo Club of Chembur Icon — Lions International</span>
+                            <span class="cv-entry-date editable" id="cv-lead2-date">2024 – 2025</span>
+                        </div>
+                        <p class="cv-text-sm editable" id="cv-lead2-desc">Food & clothing distribution drives • Blood-donation drives • Event organization • Social awareness campaigns</p>
+                    </div>
+                </section>
+
+                <!-- Extracurricular & Languages -->
+                <section class="cv-section">
+                    <h2 class="cv-section-title">EXTRACURRICULAR ACHIEVEMENTS & LANGUAGES</h2>
+                    <div class="cv-text editable" id="cv-extra-text">
+                        <strong>Extracurricular Awards:</strong> Dance (14 Awards) • Football (7 Tournaments, 2 Championships) • Basketball (3 Tournaments, 1 3rd-Place Finish) • Badminton (2 Tournaments, 1 Win, 1 3rd-Place Finish)<br>
+                        <strong>Languages Spoken:</strong> English (Fluent), Hindi (Fluent), Gujarati (Fluent), Marwadi (Fluent), German (CEFR level)<br>
+                        <strong>Interests:</strong> Gym, Athletics, Football, Basketball, Badminton, Swimming, Dance.
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
